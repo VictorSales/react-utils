@@ -21,23 +21,14 @@ class Collapse extends Component {
     };
   }
 
-  handleClick = (id) => {
-    this.setState((prevState) => {
-      let newItem = prevState.data[id];
-      newItem.status = newItem.status === 'opened' ? 'closed' : 'opened';
-      let newData = [
-        ...prevState.data,
-      ];
-      newData[id].title = newItem.title;
-      newData[id].status = newItem.status;
-      newData[id].content = newItem.content;
-      return {
-        data: [
-          ...newData
-        ],
-      };
-    })
-  }
+  handleClick = id => {
+    const data = [...this.state.data];
+    data[id].status = data[id].status === "opened" ? "closed" : "opened";
+    this.setState({
+      data
+    });
+  };
+  
   render() {
     return (
       <div className="lms-collapse">
